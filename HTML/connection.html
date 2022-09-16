@@ -1,0 +1,130 @@
+<?php
+include("connection1.php");
+//error_reporting(0);
+?>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!--jQuery library--> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!--Latest compiled and minified JavaScript--> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LOGIN FORM</title>
+        <style>
+            
+            .container{
+                background-image:url("pictures/bye1.jpg");
+                background-repeat: no-repeat;
+                width:1700px;
+              /*margin-right:400px;margin-left:250px;*/
+              background:transparent;
+              padding-left:350px;
+             float:top;
+             
+            overflow:hidden;
+            }
+            .container h4{
+              padding-left:100px;
+            }
+            .button a{
+                color:white;
+            }
+            
+        </style>
+    </head>
+    <body>
+       
+          
+        <div class="container">
+             <div class="row">
+                <div class="col-xs-4 col-xs-offset-4">
+                    <div class="panel panel-info" >
+                        <div class="panel-heading">
+                            <h4>LOGIN FORM</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"  placeholder="NAME" name="name" required = "true">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control"  placeholder="Email" name="email" required = "true">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" required = "true">
+                                </div>
+                                <div class="form-group">
+                                    <input type="DOB" class="form-control"  placeholder="DOB" name="DOB" required = "true">
+                                </div>
+                                <div class="form-group">
+                                    <input type="country" class="form-control"  placeholder="country" name="country" required = "true">
+                                </div>
+                                <div class="form-group">
+                                    <input type="state" class="form-control"  placeholder="state" name="state" required = "true">
+                                </div>
+                                 <div class="form-group">
+                                    <input type="Address" class="form-control"  placeholder="Address" name="Address" required = "true">
+                                </div>
+                               
+                                
+                           <div class="button">  
+                               <button type="submit" name="submit" class="btn btn-primary"><a href="cartpage.html">submit</a></button><br><br>
+                           </div> 
+                        </form>
+                        </div>
+ 
+                    </div>
+                </div>
+        </div>
+            
+           
+    </body>
+</html>
+<!---------
+
+if (isset($_POST['submit']))
+{
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $DOB=$_POST['DOB'];
+    $country=$_POST['country'];
+    $state=$_POST['state'];
+    $Address=$_POST['Address'];
+   
+    
+    $data=mysqli_query($conn,"INSERT into login(name,email,password,DOB,country,state,Address,submit)values"
+            . "($name','$email','$password','$DOB','$country','$state','$Address')");
+    if($data)
+{
+    echo"data inserted...";
+}
+else{
+    echo"data not inserted...";
+}  
+}
+?>
+-------->
+<?php
+if (null !== filter_input(INPUT_POST, 'submit'))
+{
+    $name=filter_input(INPUT_POST, 'name');
+    $email=filter_input(INPUT_POST, 'email');
+    $password=filter_input(INPUT_POST, 'password');
+    $DOB=filter_input(INPUT_POST, 'DOB');
+    $country=filter_input(INPUT_POST, 'country');
+    $state=filter_input(INPUT_POST, 'state');
+    $Address=filter_input(INPUT_POST, 'Address');
+    $data=mysqli_query($conn,"INSERT into login(name,email,password,DOB,country,state,Address,submit)values"
+            . "($name','$email','$password','$DOB','$country','$state','$Address')");
+    if($data)
+{
+    echo"data inserted...";
+}
+else{
+    echo"data not inserted...";
+}  
+
+}
+?>
